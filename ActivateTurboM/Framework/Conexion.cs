@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using ActivateTurboM.Framework;
 
 namespace ActivateTurboM.Framework
 {
@@ -48,5 +49,25 @@ namespace ActivateTurboM.Framework
             }
             return ds;
         }
+
+        public static DataSet SysLogin(String Username, String Password)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listParameters = new List<SqlParameter>();
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrUsername", SqlDbType = SqlDbType.VarChar, Value = Username });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrPassword", SqlDbType = SqlDbType.VarChar, Value = Password });
+
+            try
+            {
+                ds = Conexion.execute_sp("SysLogin", listParameters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
     }
+
+
 }

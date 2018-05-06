@@ -4,7 +4,7 @@
     <div class="col s12 card-panel center-align centered white">
         <div class="row">
 
-            <asp:Image ID="Image1" runat="server" ImageUrl="~/image/logoAT.png" />
+            <asp:Image ID="Image1" runat="server" class="responsive-img" ImageUrl="~/image/logoAT.png" />
         </div>
         <h3 class="header center-align indigo-text">Formulario de pre-registro</h3>
         <h4 class="header center-align indigo-text">Activate Turbo</h4>
@@ -28,7 +28,8 @@
         <div class="row">
             <div class="input-field col s6">
                 <i class="material-icons prefix">call</i>
-                <asp:TextBox ID="tbTelefono" runat="server" placeholder="Teléfono" MaxLength="99999999" type="number" class="validate" required="required" TabIndex="5"></asp:TextBox>
+                <asp:TextBox ID="tbTelefono" runat="server" placeholder="Teléfono" MaxLength="99999999" type="text" class="validate" ValidationGroup="guardar" required="required" TabIndex="5"></asp:TextBox>
+                <asp:RangeValidator ID="RangeValidator2" runat="server" MinimumValue="1" ValidationGroup="guardar" ControlToValidate="tbTelefono" MaximumValue="999999999" class="invalid" ErrorMessage="Por favor introduzca un número válido."></asp:RangeValidator>
             </div>
             <div class="input-field col s6">
                 <i class="material-icons prefix">smartphone</i>

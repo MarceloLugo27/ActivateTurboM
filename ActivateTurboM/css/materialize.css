@@ -2163,7 +2163,9 @@ html {
  * Remove the margin in all browsers (opinionated).
  */
 body {
-  margin: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 /**
@@ -2196,8 +2198,7 @@ h1 {
 figcaption,
 figure,
 main {
-  /* 1 */
-  display: block;
+    flex: 1 0 auto;
 }
 
 /**
@@ -3505,6 +3506,7 @@ table span.badge {
   margin-left: auto;
   left: auto;
   right: auto;
+    height: 20px;
 }
 
 .row .col.s3 {
@@ -4338,9 +4340,12 @@ nav .brand-logo {
 }
 
 nav .brand-logo.center {
-  left: 50%;
+  left: 41%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+    top: 17px;
+    height: 46px;
+    width: 230px;
 }
 
 @media only screen and (max-width: 992px) {
@@ -6502,7 +6507,8 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
 }
 
 .input-field.col label {
-  left: 0.75rem;
+  left: -2147483648px;
+    height: 24px;
 }
 
 .input-field.col .prefix ~ label,

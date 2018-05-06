@@ -29,7 +29,7 @@ namespace ActivateTurboM
             nuevoUsuario.StrNombres = tbNombres.Text;
             nuevoUsuario.StrApellidoPaterno = tbApellidoPaterno.Text;
             nuevoUsuario.StrApellidoMaterno = tbApellidoMaterno.Text;
-            nuevoUsuario.IntTelefono = int.Parse(tbTelefono.Text);
+            nuevoUsuario.StrTelefono = tbTelefono.Text;
             nuevoUsuario.StrCelular = tbCelular.Text;
             nuevoUsuario.StrEmail = tbCorreo.Text;
             nuevoUsuario.StrNumeroReferencia = "";

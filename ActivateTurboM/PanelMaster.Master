@@ -15,8 +15,6 @@
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
 </head>
 <body>
     <form runat="server">
@@ -40,22 +38,82 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-        <div class="container">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-        </div>
-    </form>
-    <%--<footer class="page-footer indigo">--%>
-        <div class="footer-copyright indigo">
-            <div class="container">
-                &copy; <%: DateTime.Now.Year %> - Todos los derechos reservados, CR & Asociados México
-                <asp:HyperLink ID="HyperLink1" href="http://www.cryasociados.com.mx/" runat="server">http://www.cryasociados.com.mx/</asp:HyperLink>
+
+        <nav id="navbarUser" runat="server">
+            <div class="nav-wrapper indigo">
+                <ul class="right red accent-4">
+                    <li>
+                        <asp:HyperLink ID="HyperLink2" runat="server">Cerrar sesión <i class="material-icons right">close</i></asp:HyperLink></li>
+                </ul>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="left hide-on-med-and-down">
+                    <li>
+                        <asp:LinkButton ID="btnInicio" runat="server" OnClick="btnInicio_Click">Inicio</asp:LinkButton></li>
+                    <li>
+                        <asp:LinkButton ID="btnPerfil" runat="server" OnClick="btnPerfil_Click">Perfil</asp:LinkButton></li>
+                    <li>
+                        <asp:LinkButton ID="btnGenealogia" runat="server" OnClick="btnGenealogia_Click">Genealogia</asp:LinkButton></li>
+                    <li>
+                        <asp:LinkButton ID="btnPagos" runat="server">Pagos</asp:LinkButton></li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li>
+                <asp:LinkButton ID="btnInicioMov" runat="server" OnClick="btnInicioMov_Click">Inicio</asp:LinkButton></li>
+            <li>
+                <asp:LinkButton ID="btnPerfilMov" runat="server">Perfil</asp:LinkButton></li>
+            <li>
+                <asp:LinkButton ID="btnGenealogiaMov" runat="server" OnClick="btnGenealogiaMov_Click">Genealogia</asp:LinkButton></li>
+            <li>
+                <asp:LinkButton ID="btnPagosMov" runat="server">Pagos</asp:LinkButton></li>
+        </ul>
+
+        <!-- Page Layout here -->
+        <div class="row">
+            <br />
+            <div class="col s12">
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </div>
         </div>
-    <%--</footer>--%>
 
-    <script src="js/materialize.js"></script>
+    </form>
+    <footer class="page-footer indigo fixed-bottom">
+        <div class="footer-copyright indigo">
+            <div class="container">
+                &copy; <%: DateTime.Now.Year %> - Todos los derechos reservados, CR & Asociados México 
+                <asp:Label ID="lblIDUsuario" runat="server" Text="lblIDUsuario" Visible="false"></asp:Label>
+                <asp:Label ID="lblEstadoUsuario" runat="server" Text="lblEstadoUsuario" Visible="False"></asp:Label>
+                <asp:HyperLink ID="HyperLink1" href="http://www.cryasociados.com.mx/" runat="server">http://www.cryasociados.com.mx/</asp:HyperLink>
+                <br />
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            M.AutoInit();
+        });
+
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        });
+
+        function openModal() {
+            $('#modal1').modal('open');
+        }
+
+    </script>
 </body>
+
 </html>
 

@@ -143,6 +143,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Ingreso.aspx" />
     <Content Include="PanelMaster.Master" />
     <None Include="Properties\PublishProfiles\activateturbo - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -150,6 +151,8 @@
     <Content Include="js\materialize.js" />
     <Content Include="js\materialize.min.js" />
     <Content Include="Login.aspx" />
+    <Content Include="Panel\Genealogia.aspx" />
+    <Content Include="Panel\Inicio.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -202,9 +205,17 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Framework\Conexion.cs" />
+    <Compile Include="Framework\Nodo.cs" />
     <Compile Include="Framework\Usuario.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Ingreso.aspx.cs">
+      <DependentUpon>Ingreso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ingreso.aspx.designer.cs">
+      <DependentUpon>Ingreso.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -219,6 +230,20 @@
     </Compile>
     <Compile Include="PanelMaster.Master.designer.cs">
       <DependentUpon>PanelMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Panel\Genealogia.aspx.cs">
+      <DependentUpon>Genealogia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Panel\Genealogia.aspx.designer.cs">
+      <DependentUpon>Genealogia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Panel\Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Panel\Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registro.aspx.cs">

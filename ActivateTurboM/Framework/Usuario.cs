@@ -16,7 +16,7 @@ namespace ActivateTurboM.Framework
         String strApellidoPaterno;
         String strApellidoMaterno;
         String strEmail;
-        int intTelefono;
+        String strTelefono;
         String strCelular;
         int intTipoContrato;
         String strRFC;
@@ -35,7 +35,7 @@ namespace ActivateTurboM.Framework
         public string StrApellidoPaterno { get => strApellidoPaterno; set => strApellidoPaterno = value; }
         public string StrApellidoMaterno { get => strApellidoMaterno; set => strApellidoMaterno = value; }
         public string StrEmail { get => strEmail; set => strEmail = value; }
-        public int IntTelefono { get => intTelefono; set => intTelefono = value; }
+        public String StrTelefono { get => strTelefono; set => strTelefono = value; }
         public String StrCelular { get => strCelular; set => strCelular = value; }
         public int IntTipoContrato { get => intTipoContrato; set => intTipoContrato = value; }
         public string StrRFC { get => strRFC; set => strRFC = value; }
@@ -56,13 +56,30 @@ namespace ActivateTurboM.Framework
             listParameters.Add(new SqlParameter { ParameterName = "@pStrApellidoPaterno", SqlDbType = SqlDbType.VarChar, Value = UsuarioTemporal.StrApellidoPaterno });
             listParameters.Add(new SqlParameter { ParameterName = "@pStrApellidoMaterno", SqlDbType = SqlDbType.VarChar, Value = UsuarioTemporal.StrApellidoMaterno });
             listParameters.Add(new SqlParameter { ParameterName = "@pStrEmail", SqlDbType = SqlDbType.VarChar, Value = UsuarioTemporal.StrEmail });
-            listParameters.Add(new SqlParameter { ParameterName = "@pIntTelefono", SqlDbType = SqlDbType.Int, Value = UsuarioTemporal.IntTelefono });
-            listParameters.Add(new SqlParameter { ParameterName = "@pStrCelular", SqlDbType = SqlDbType.VarChar, Value = UsuarioTemporal.IntTelefono });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrTelefono", SqlDbType = SqlDbType.Int, Value = UsuarioTemporal.StrTelefono });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrCelular", SqlDbType = SqlDbType.VarChar, Value = UsuarioTemporal.StrTelefono });
             listParameters.Add(new SqlParameter { ParameterName = "@pIntTipoContrato", SqlDbType = SqlDbType.Int, Value = UsuarioTemporal.IntTipoContrato });
 
             try
             {
                 ds = Conexion.execute_sp("InsertUsuarioTemp", listParameters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public static DataSet SelectNombreCompletoUsuario(int IDUSuario)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listParameters = new List<SqlParameter>();
+            listParameters.Add(new SqlParameter { ParameterName = "@pIDUsuario", SqlDbType = SqlDbType.VarChar, Value = IDUSuario });
+
+            try
+            {
+                ds = Conexion.execute_sp("NombreCompletoUsuario", listParameters);
             }
             catch (Exception ex)
             {
