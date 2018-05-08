@@ -94,6 +94,15 @@ namespace ActivateTurboM.Panel {
         protected global::System.Web.UI.WebControls.TextBox tbRFC;
         
         /// <summary>
+        /// Control tbSeguroSocial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbSeguroSocial;
+        
+        /// <summary>
         /// Control tbEmail.
         /// </summary>
         /// <remarks>

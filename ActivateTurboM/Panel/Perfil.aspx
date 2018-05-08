@@ -53,7 +53,7 @@
                     <asp:TextBox ID="tbRFC" placeholder="RFC" class="validate" required="required" runat="server"></asp:TextBox>
                 </div>
                 <div class="input-field col s12 m4 l3">
-                    <asp:TextBox ID="tbSeguroSocial" placeholder="Seguro Social (NSS)" class="validate" required="required"runat="server"></asp:TextBox>
+                    <asp:TextBox ID="tbSeguroSocial" placeholder="Seguro Social (NSS)" class="validate" required="required" runat="server"></asp:TextBox>
                 </div>
             </div>
         </div>

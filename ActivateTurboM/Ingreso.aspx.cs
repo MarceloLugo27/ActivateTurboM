@@ -12,7 +12,7 @@ namespace ActivateTurboM
     public partial class Ingreso : System.Web.UI.Page
     {
         DataSet dsLogin = new DataSet();
-        
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,12 +33,16 @@ namespace ActivateTurboM
             {
                 divMensajeError.Visible = false;
                 lblIDUsuario.Text = dsLogin.Tables[0].Rows[0]["IDUsuario"].ToString();
+
+
                 String IDUsuario = lblIDUsuario.Text;
+            #region Fork Astrid, comentar al pasar a Master
+            //IDUsuario = "6";
+            #endregion
+            Session["IDU"] = IDUsuario;
 
-                Session["IDU"] = IDUsuario;
 
-
-                Response.Redirect("Panel/Inicio.aspx");
+            Response.Redirect("Panel/Inicio.aspx");
             }
 
             else
