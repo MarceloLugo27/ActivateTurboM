@@ -29,29 +29,34 @@ namespace ActivateTurboM
             Label lblIDUsuario = this.Master.FindControl("lblIDUsuario") as Label;
             Label lblEstadoUsuario = this.Master.FindControl("lblEstadoUsuario") as Label;
 
-            if (dsLogin.Tables[0].Rows.Count > 0)
-            {
-                divMensajeError.Visible = false;
-                lblIDUsuario.Text = dsLogin.Tables[0].Rows[0]["IDUsuario"].ToString();
+            #region Codigo a comentar para actualizar el fork de Astrid
+            //if (dsLogin.Tables[0].Rows.Count > 0)
+            //{
+            //    divMensajeError.Visible = false;
+            //    lblIDUsuario.Text = dsLogin.Tables[0].Rows[0]["IDUsuario"].ToString();
+
+            #endregion
 
 
-                String IDUsuario = lblIDUsuario.Text;
+            String IDUsuario = lblIDUsuario.Text;
             #region Fork Astrid, comentar al pasar a Master
-            //IDUsuario = "6";
+            IDUsuario = "6";
             #endregion
             Session["IDU"] = IDUsuario;
 
+            #region Codigo a comentar para actualizar el fork de Astrid
+            //Response.Redirect("Panel/Inicio.aspx");
+            //}
 
-            Response.Redirect("Panel/Inicio.aspx");
-            }
+            //else
+            //{
+            //    divMensajeError.Visible = true;
+            //    lblMensajeError.Text = "<b>Nombre de usuario y/contraseña inválidos.</b>";
+            //    tbUsername.Text = "";
+            //    tbPassword.Text = "";
+            //}
 
-            else
-            {
-                divMensajeError.Visible = true;
-                lblMensajeError.Text = "<b>Nombre de usuario y/contraseña inválidos.</b>";
-                tbUsername.Text = "";
-                tbPassword.Text = "";
-            }
+            #endregion
 
         }
     }
