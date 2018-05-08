@@ -14,7 +14,6 @@ namespace ActivateTurboM
         {
             if (!IsPostBack)
             {
-
             }
         }
 
@@ -22,8 +21,8 @@ namespace ActivateTurboM
         {
             lblIDUsuario.Text = "";
             lblEstadoUsuario.Text = "";
-            Response.Redirect("Ingreso.aspx", true);
             Session["IDU"] = null;
+            Response.Redirect("/Ingreso.aspx", true);
         }
 
         protected void btnInicio_Click(object sender, EventArgs e)
@@ -33,7 +32,7 @@ namespace ActivateTurboM
 
         protected void btnPerfil_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Perfil.aspx", true);
         }
 
         protected void btnGenealogia_Click(object sender, EventArgs e)
@@ -49,6 +48,11 @@ namespace ActivateTurboM
         protected void btnInicioMov_Click(object sender, EventArgs e)
         {
             Response.Redirect("Inicio.aspx", true);
+        }
+
+        protected void btnPerfilMov_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Perfil.aspx", true);
         }
     }
 }

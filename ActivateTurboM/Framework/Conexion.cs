@@ -67,6 +67,39 @@ namespace ActivateTurboM.Framework
             }
             return ds;
         }
+
+        public static DataSet SelectEstados()
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listParameters = new List<SqlParameter>();
+
+            try
+            {
+                ds = Conexion.execute_sp("SelectEstados", listParameters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public static DataSet SelectCiudad(int IDEstado)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listParameters = new List<SqlParameter>();
+            listParameters.Add(new SqlParameter { ParameterName = "@pIDEstado", SqlDbType = SqlDbType.Int, Value = IDEstado });
+
+            try
+            {
+                ds = Conexion.execute_sp("SelectCiudad", listParameters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
     }
 
 

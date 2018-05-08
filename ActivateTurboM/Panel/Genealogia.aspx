@@ -2,77 +2,101 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="lblDDL1" runat="server" Text="Label" Visible="false"></asp:Label><asp:Label ID="lblDDL2" runat="server" Text="Label" Visible="false"></asp:Label>
-    <div>Ascendencia directa</div>
-    <div>
-        <div class="s3">
-            <asp:DropDownList ID="ddlMisTickets1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMisTickets1_SelectedIndexChanged"></asp:DropDownList>
+
+    <div class="container">
+
+        <div class="card col s12 left">
+            <div class="card-content">
+                <span class="card-title">Ascendencia directa (Padre)</span>
+                <asp:DropDownList ID="ddlAscendencia" runat="server" AutoPostBack="true" class="col s6" OnSelectedIndexChanged="ddlAscendencia_SelectedIndexChanged" CausesValidation="True"></asp:DropDownList>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="ddlAscendencia" EventName="SelectedIndexChanged" />
+                    </Triggers>
+                    <ContentTemplate>
+                        <div>
+                            <asp:GridView ID="dgvAscendencia" class="highlight responsive-table" AutoGenerateColumns="false" runat="server">
+                                <Columns>
+                                    <asp:BoundField DataField="strNumeroReferencia" HeaderText="Referencia" />
+                                    <asp:BoundField DataField="strNombreCompleto" HeaderText="Nombre" />
+                                    <asp:BoundField DataField="strOrigen" HeaderText="Ciudad" />
+                                    <%-- <asp:BoundField DataField="intTelefono" HeaderText="Teléfono" />
+                                    <asp:BoundField DataField="strCelular" HeaderText="Celular" />--%>
+                                    <asp:BoundField DataField="strEmail" HeaderText="Email" />
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
         </div>
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-            <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="ddlMisTickets2" EventName="SelectedIndexChanged" />
-            </Triggers>
-            <ContentTemplate>
-                <div class="responsive-table centered highlight">
-                    <asp:GridView ID="dgvAscendencia" runat="server">
-                        <Columns>
-                            <asp:BoundField DataField="strNumeroReferencia" HeaderText="Referencia" />
-                            <asp:BoundField DataField="strNombreCompleto" HeaderText="Nombre completo" />
-                            <asp:BoundField DataField="strOrigen" HeaderText="Ciudad" />
-                            <asp:BoundField DataField="intTelefono" HeaderText="Teléfono" />
-                            <asp:BoundField DataField="strCelular" HeaderText="Celular" />
-                            <asp:BoundField DataField="strEmail" HeaderText="Email" />
-                        </Columns>
-                    </asp:GridView>
-                </div>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-    </div>
-    <div class="">Mis ventas</div>
-    <div class="">
-        <div class="s3">
-            <asp:DropDownList ID="ddlMisTickets2" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMisTickets2_SelectedIndexChanged"></asp:DropDownList>
+
+        <div class="card col s12 left">
+            <div class="card-content">
+                <span class="card-title">Mis ventas</span>
+                <asp:DropDownList ID="ddlMisVentas" runat="server" AutoPostBack="true" class="col s6" OnSelectedIndexChanged="ddlMisVentas_SelectedIndexChanged" CausesValidation="True"></asp:DropDownList>
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="ddlMisVentas" EventName="SelectedIndexChanged" />
+                    </Triggers>
+                    <ContentTemplate>
+                        <div>
+                            <asp:GridView ID="dgvVendidos" class="highlight responsive-table" AutoGenerateColumns="false" runat="server">
+                                <Columns>
+                                    <asp:BoundField DataField="strNumeroReferencia" HeaderText="Referencia" />
+                                    <asp:BoundField DataField="strNombreCompleto" HeaderText="Nombre" />
+                                    <asp:BoundField DataField="strOrigen" HeaderText="Ciudad" />
+                                    <asp:BoundField DataField="intTelefono" HeaderText="Teléfono" />
+                                    <asp:BoundField DataField="strCelular" HeaderText="Celular" />
+                                    <asp:BoundField DataField="strEmail" HeaderText="Email" />
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+                        <div id="divEstadoDGV" runat="server" visible="false" class="col s6">
+                            <p>
+                                <asp:Label ID="lblEstadoDGV" runat="server" Text="Label"></asp:Label>
+                            </p>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
         </div>
-        <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
-            <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="ddlMisTickets2" EventName="SelectedIndexChanged" />
-            </Triggers>
-            <ContentTemplate>
-                <div class="responsive-table centered highlight">
-                    <asp:GridView ID="dgvMisVentas" runat="server">
-                        <Columns>
-                            <asp:BoundField DataField="strNumeroReferencia" HeaderText="Referencia" />
-                            <asp:BoundField DataField="strNombreCompleto" HeaderText="Nombre completo" />
-                            <asp:BoundField DataField="strOrigen" HeaderText="Ciudad" />
-                            <asp:BoundField DataField="intTelefono" HeaderText="Teléfono" />
-                            <asp:BoundField DataField="strCelular" HeaderText="Celular" />
-                            <asp:BoundField DataField="strEmail" HeaderText="Email" />
-                        </Columns>
-                    </asp:GridView>
-                </div>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-    </div>
-    <div class="<%--collapsible-header--%>">Descendencia directa</div>
-    <div class="<%--collapsible-body--%>">
-        <div>
-            <%--<asp:DropDownList ID="ddlMisTickets3" runat="server"></asp:DropDownList>--%>
+
+        <div class="card col s12 left">
+            <div class="card-content">
+                <span class="card-title">Descendencia</span>
+                <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="btnCargarDescendientes" EventName="Click" />
+                    </Triggers>
+                    <ContentTemplate>
+                        <div>
+                            <asp:GridView ID="dgvDescendencia" class="highlight responsive-table" AutoGenerateColumns="false" runat="server">
+                                <Columns>
+                                    <asp:BoundField DataField="strNumeroReferencia" HeaderText="Referencia" />
+                                    <asp:BoundField DataField="strNombreCompleto" HeaderText="Nombre" />
+                                    <asp:BoundField DataField="strOrigen" HeaderText="Ciudad" />
+                                    <asp:BoundField DataField="intTelefono" HeaderText="Teléfono" />
+                                    <asp:BoundField DataField="strCelular" HeaderText="Celular" />
+                                    <asp:BoundField DataField="strEmail" HeaderText="Email" />
+                                </Columns>
+                            </asp:GridView>
+                            <br />
+                            <div id="divEstadoHijos" runat="server" visible="false" class="col s12">
+                            <p>
+                                <asp:Label ID="lblEstadoHijos" runat="server" Text="Label"></asp:Label>
+                            </p>
+                        </div>
+                        </div>
+                        <div class="card-action">
+                            <asp:LinkButton ID="btnCargarDescendientes" runat="server" OnClick="btnCargarDescendientes_Click">Cargar descendientes</asp:LinkButton>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
         </div>
-        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
-            <ContentTemplate>
-                <div class="responsive-table centered highlight">
-                    <asp:GridView ID="dgvDescendencia" runat="server">
-                        <Columns>
-                            <asp:BoundField DataField="strNumeroReferencia" HeaderText="Referencia" />
-                            <asp:BoundField DataField="strNombreCompleto" HeaderText="Nombre completo" />
-                            <asp:BoundField DataField="strOrigen" HeaderText="Ciudad" />
-                            <asp:BoundField DataField="intTelefono" HeaderText="Teléfono" />
-                            <asp:BoundField DataField="strCelular" HeaderText="Celular" />
-                            <asp:BoundField DataField="strEmail" HeaderText="Email" />
-                        </Columns>
-                    </asp:GridView>
-                </div>
-            </ContentTemplate>
-        </asp:UpdatePanel>
+
+
     </div>
 
 

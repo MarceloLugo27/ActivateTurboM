@@ -43,7 +43,7 @@
             <div class="nav-wrapper indigo">
                 <ul class="right red accent-4">
                     <li>
-                        <asp:HyperLink ID="HyperLink2" runat="server">Cerrar sesión <i class="material-icons right">close</i></asp:HyperLink></li>
+                        <asp:LinkButton ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click">Cerrar sesión <i class="material-icons right">close</i></asp:LinkButton></li>
                 </ul>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="left hide-on-med-and-down">
@@ -54,7 +54,7 @@
                     <li>
                         <asp:LinkButton ID="btnGenealogia" runat="server" OnClick="btnGenealogia_Click">Genealogia</asp:LinkButton></li>
                     <li>
-                        <asp:LinkButton ID="btnPagos" runat="server">Pagos</asp:LinkButton></li>
+                        <asp:LinkButton ID="btnPagos" Enabled="false" runat="server">Pagos</asp:LinkButton></li>
                 </ul>
             </div>
         </nav>
@@ -63,23 +63,20 @@
             <li>
                 <asp:LinkButton ID="btnInicioMov" runat="server" OnClick="btnInicioMov_Click">Inicio</asp:LinkButton></li>
             <li>
-                <asp:LinkButton ID="btnPerfilMov" runat="server">Perfil</asp:LinkButton></li>
+                <asp:LinkButton ID="btnPerfilMov" runat="server" OnClick="btnPerfilMov_Click">Perfil</asp:LinkButton></li>
             <li>
                 <asp:LinkButton ID="btnGenealogiaMov" runat="server" OnClick="btnGenealogiaMov_Click">Genealogia</asp:LinkButton></li>
             <li>
-                <asp:LinkButton ID="btnPagosMov" runat="server">Pagos</asp:LinkButton></li>
+                <asp:LinkButton ID="btnPagosMov" Enabled="false" runat="server">Pagos</asp:LinkButton></li>
         </ul>
 
         <!-- Page Layout here -->
         <div class="row">
             <br />
             <div class="col s12">
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>
-                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                        </asp:ContentPlaceHolder>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+
+                </asp:ContentPlaceHolder>
             </div>
         </div>
 

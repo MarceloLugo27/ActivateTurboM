@@ -16,6 +16,12 @@ namespace ActivateTurboM.Panel
         {
             if (!IsPostBack)
             {
+
+                if (Session["IDU"] == null)
+                {
+                    Response.Redirect("/Ingreso.aspx", true);
+                }
+
                 System.Web.UI.HtmlControls.HtmlGenericControl navbarUser = this.Master.FindControl("navbarUser") as System.Web.UI.HtmlControls.HtmlGenericControl;
                 navbarUser.Visible = true;
 

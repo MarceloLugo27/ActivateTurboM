@@ -11,57 +11,100 @@ namespace ActivateTurboM.Panel
 {
     public partial class Genealogia : System.Web.UI.Page
     {
+        DataSet dsDDL1 = new DataSet();
+        DataSet dsDDL2 = new DataSet();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            DataSet dsDDL1 = new DataSet();
-            DataSet dsDDL2 = new DataSet();
-
             if (!IsPostBack)
             {
-                dgvAscendencia.AutoGenerateColumns = false;
+                
+                if (Session["IDU"] == null)
+                {
+                    Response.Redirect("/Ingreso.aspx", true);
+                }
+
+                divEstadoDGV.Visible = false;
+                divEstadoHijos.Visible = false;
                 Label lblIDUsuario = this.Master.FindControl("lblIDUsuario") as Label;
                 lblIDUsuario.Text = (string)Session["IDU"];
                 dsDDL1 = Nodo.SelectNodoPadreDDL(int.Parse(lblIDUsuario.Text));
                 dsDDL2 = Nodo.SelectNodoPadreDDL(int.Parse(lblIDUsuario.Text));
 
-                ddlMisTickets1.DataSource = dsDDL1.Tables[0];
-                ddlMisTickets1.DataTextField = "strNumeroReferencia";
-                ddlMisTickets1.DataValueField = "IDNodoPadre";
-                ddlMisTickets1.DataBind();
+                ddlAscendencia.DataSource = dsDDL1.Tables[0];
+                ddlAscendencia.DataTextField = "strNumeroReferencia";
+                ddlAscendencia.DataValueField = "IDNodoPadre";
+                ddlAscendencia.DataBind();
+                ddlAscendencia.Items.Insert(0, new ListItem("Seleccione su ticket...", "-1"));
 
-                ddlMisTickets2.DataSource = dsDDL2.Tables[0];
-                ddlMisTickets2.DataTextField = "strNumeroReferencia";
-                ddlMisTickets2.DataValueField = "IDNodoPadre";
-                ddlMisTickets2.DataBind();
-
-                DataSet dgv3 = new DataSet();
-                dgv3 = Nodo.SelectInfoNodoDescendiente(int.Parse(lblIDUsuario.Text));
-                dgvDescendencia.DataSource = dgv3.Tables[0];
-                dgvDescendencia.DataBind();
-
-                DataSet dgv1 = new DataSet();
-                dgv1 = Nodo.SelectInfoNodoPadre(1);
-                dgvAscendencia.DataSource = dgv1.Tables[0];
-                dgvAscendencia.DataBind();
+                ddlMisVentas.DataSource = dsDDL2.Tables[0];
+                ddlMisVentas.DataTextField = "strNumeroReferencia";
+                ddlMisVentas.DataValueField = "IDNodo";
+                ddlMisVentas.DataBind();
+                ddlMisVentas.Items.Insert(0, new ListItem("Seleccione su ticket...", "-1"));
             }
         }
 
-        protected void ddlMisTickets1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlAscendencia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lblDDL1.Text = ddlMisTickets1.SelectedValue;
-            DataSet dgv1 = new DataSet();
-            dgv1 = Nodo.SelectInfoNodoPadre(int.Parse(lblDDL1.Text));
-            dgvAscendencia.DataSource = dgv1.Tables[0];
+            lblDDL1.Text = ddlAscendencia.SelectedValue;
+            DataSet dsAscendencia = new DataSet();
+            dsAscendencia = Nodo.SelectInfoNodoPadre(int.Parse(lblDDL1.Text));
+            dgvAscendencia.DataSource = dsAscendencia.Tables[0];
             dgvAscendencia.DataBind();
         }
 
-        protected void ddlMisTickets2_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlMisVentas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lblDDL2.Text = ddlMisTickets2.SelectedValue;
-            DataSet dgv2 = new DataSet();
-            dgv2 = Nodo.SelectInfoNodoVendido(int.Parse(lblDDL2.Text));
-            dgvMisVentas.DataSource = dgv2.Tables[0];
-            dgvMisVentas.DataBind();
+            divEstadoDGV.Visible = false;
+            lblDDL2.Text = ddlMisVentas.SelectedValue;
+            if (ddlMisVentas.SelectedValue == "-1")
+            {
+                divEstadoDGV.Visible = false;
+                dgvVendidos.DataSource = null;
+                dgvVendidos.DataBind();
+            }
+            DataSet dsMisVentas = new DataSet();
+            dsMisVentas = Nodo.SelectInfoNodoVendido(int.Parse(lblDDL2.Text));
+            if (dsMisVentas.Tables[0].Rows.Count == 0)
+            {
+                divEstadoDGV.Visible = true;
+                lblEstadoDGV.Text = "Actualmente no tiene ningún ticket vendido a algún socio con este número de referencia.";
+                dgvVendidos.DataSource = null;
+                dgvVendidos.DataBind();
+                if (ddlMisVentas.SelectedValue == "-1")
+                {
+                    divEstadoDGV.Visible = false;
+                    dgvVendidos.DataSource = null;
+                    dgvVendidos.DataBind();
+                }
+            }
+            else
+            {
+                dgvVendidos.DataSource = dsMisVentas.Tables[0];
+                dgvVendidos.DataBind();
+                divEstadoDGV.Visible = true;
+                lblEstadoDGV.Text = String.Format("Actualmente cuenta con {0} tickets vendidos de 4 con este número de referencia({0}/4).", dsMisVentas.Tables[0].Rows.Count);
+            }
+        }
+
+        protected void btnCargarDescendientes_Click(object sender, EventArgs e)
+        {
+            DataSet dgv3 = new DataSet();
+            Label lblIDUsuario = this.Master.FindControl("lblIDUsuario") as Label;
+            lblIDUsuario.Text = (string)Session["IDU"];
+            dgv3 = Nodo.SelectInfoNodoDescendiente(int.Parse(lblIDUsuario.Text));
+            if (dgv3.Tables[0].Rows.Count == 0)
+            {
+                divEstadoHijos.Visible = true;
+                lblEstadoDGV.Text = "Actualmente no cuenta con descendientes en ninguno de sus números de referencia.";
+                dgvDescendencia.DataSource = null;
+                dgvDescendencia.DataBind();
+            }
+            dgvDescendencia.DataSource = dgv3.Tables[0];
+            dgvDescendencia.DataBind();
+
+
         }
     }
 }

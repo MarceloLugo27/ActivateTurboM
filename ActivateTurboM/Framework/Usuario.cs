@@ -28,6 +28,8 @@ namespace ActivateTurboM.Framework
         String strColonia;
         int intCodigoPostal;
 
+        String strPassword;
+
         public int IntIDUsuario { get => intIDUsuario; set => intIDUsuario = value; }
         public int IntIDCiudad { get => intIDCiudad; set => intIDCiudad = value; }
         public string StrNumeroReferencia { get => strNumeroReferencia; set => strNumeroReferencia = value; }
@@ -46,6 +48,7 @@ namespace ActivateTurboM.Framework
         public int IntNumeroInterior { get => intNumeroInterior; set => intNumeroInterior = value; }
         public string StrColonia { get => strColonia; set => strColonia = value; }
         public int IntCodigoPostal { get => intCodigoPostal; set => intCodigoPostal = value; }
+        public string StrPassword { get => strPassword; set => strPassword = value; }
 
         public static DataSet InsertarUsuarioTemporal(Usuario UsuarioTemporal)
         {
