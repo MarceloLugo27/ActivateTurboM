@@ -8,6 +8,10 @@
         </div>
         <asp:Label ID="lblIDEstado" runat="server" Visible="false" Text=""></asp:Label>
         <asp:Label ID="lblIDCiudad" runat="server" Visible="false" Text=""></asp:Label>
+        <asp:Label ID="lblDireccionFotoPerfil" runat="server" Visible="false" Text=""></asp:Label>
+        <asp:Label ID="lblDireccionActaNac" runat="server" Visible="false" Text=""></asp:Label>
+        <asp:Label ID="lblDireccionCURP" runat="server" Visible="false" Text=""></asp:Label>
+        <asp:Label ID="lblComprobanteDom" runat="server" Visible="false" Text=""></asp:Label>
 
         <div class="row">
             <div class="col s12 m5">
@@ -106,21 +110,96 @@
                     <asp:Label ID="Label1" runat="server" Text="Estado:"></asp:Label>
                     <asp:DropDownList ID="ddlEstado" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged"></asp:DropDownList>
                 </div>
-                <div class="col s6">
-                    <asp:Label ID="Label2" runat="server" Text="Municipio:"></asp:Label>
-                    <asp:DropDownList ID="ddlMunicipio" runat="server" class="validate" required="required" AutoPostBack="True" OnSelectedIndexChanged="ddlMunicipio_SelectedIndexChanged"></asp:DropDownList>
-                </div>
+                <%--<asp:UpdatePanel runat="server" ID="UpdatePanel" UpdateMode="Conditional">
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="ddlEstado" EventName="SelectedIndexChanged" />
+                    </Triggers>
+                    <ContentTemplate>--%>
+                        <div class="col s6">
+                            <asp:Label ID="Label2" runat="server" Text="Municipio:"></asp:Label>
+                            <asp:DropDownList ID="ddlMunicipio" runat="server" class="validate" required="required" AutoPostBack="True" OnSelectedIndexChanged="ddlMunicipio_SelectedIndexChanged"></asp:DropDownList>
+                        </div>
+<%--                    </ContentTemplate>
+                </asp:UpdatePanel>--%>
             </div>
         </div>
         <div class="divider"></div>
         <div class="section">
             <h5>Documentación</h5>
-            <p>En construcción</p>
+
+
+            <div class="row">
+                <div class="col s12 m7">
+                    <div class="card">
+                        <div class="card-image">
+                            <asp:Image ID="imgFotoPerfil" runat="server" ImageUrl="~/image/placeholder.png" />
+                            <span class="card-title teal-text">Foto de perfil</span>
+                        </div>
+                        <div class="card-action">
+                            <asp:FileUpload ID="uploadFotoPerfil" runat="server" accept="image/*" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 m7">
+                    <div class="card">
+                        <div class="card-image">
+                            <asp:Image ID="imgActaNacimiento" runat="server" ImageUrl="~/image/placeholder.png" />
+                            <span class="card-title teal-text">Acta de nacimiento</span>
+                        </div>
+                        <div class="card-action">
+                            <asp:FileUpload ID="uploadActaNacimiento" accept="image/*" runat="server" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 m7">
+                    <div class="card">
+                        <div class="card-image">
+                            <asp:Image ID="imgCURP" runat="server" ImageUrl="~/image/placeholder.png" />
+                            <span class="card-title teal-text">CURP</span>
+                        </div>
+                        <div class="card-action">
+                            <asp:FileUpload ID="uploadCURP" accept="image/*" runat="server" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col s12 m7">
+                    <div class="card">
+                        <div class="card-image">
+                            <asp:Image ID="imgComprobanteDom" runat="server" ImageUrl="~/image/placeholder.png" />
+                            <span class="card-title teal-text">Comprobante de domicilio</span>
+                        </div>
+                        <div class="card-action">
+                            <asp:FileUpload ID="uploadComprobanteDom" accept="image/*" runat="server" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
+
+        <div class="divider"></div>
+        <div class="section">
+            <h5></h5>
+            <p></p>
+        </div>
+
     </div>
 
+
     <div class="fixed-action-btn">
-        <asp:LinkButton ID="btnGuardar" ValidationGroup="guardar" class="btn-floating btn-large red" runat="server" href="#modal1" OnClick="btnGuardar_Click"><i class="large material-icons">save</i></asp:LinkButton>
+        <asp:LinkButton ID="btnGuardar" class="btn-floating btn-large red" runat="server" OnClick="btnGuardar_Click"><i class="large material-icons">save</i></asp:LinkButton>
+
     </div>
 
 </asp:Content>

@@ -16,10 +16,17 @@ namespace ActivateTurboM.Panel
         {
             if (!IsPostBack)
             {
-
                 if (Session["IDU"] == null)
                 {
                     Response.Redirect("/Ingreso.aspx", true);
+
+                    if ((int)Session["BTU"] == 1)
+                    {
+                        LinkButton btnModoAdmin = this.Master.FindControl("btnModoAdmin") as LinkButton;
+                        System.Web.UI.HtmlControls.HtmlGenericControl divModoAdminSidebar = this.Master.FindControl("divModoAdminSidebar") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                        btnModoAdmin.Visible = true;
+                        divModoAdminSidebar.Visible = true;
+                    }
                 }
 
                 System.Web.UI.HtmlControls.HtmlGenericControl navbarUser = this.Master.FindControl("navbarUser") as System.Web.UI.HtmlControls.HtmlGenericControl;

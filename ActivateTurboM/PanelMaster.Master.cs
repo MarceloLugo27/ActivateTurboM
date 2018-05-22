@@ -54,5 +54,15 @@ namespace ActivateTurboM
         {
             Response.Redirect("Perfil.aspx", true);
         }
+
+        protected void btnAdminAsignarCuentasMov_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminUsuariosPendientes.aspx", true);
+        }
+
+        protected void btnAdminAsignarCuentas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminUsuariosPendientes.aspx", true);
+        }
     }
 }

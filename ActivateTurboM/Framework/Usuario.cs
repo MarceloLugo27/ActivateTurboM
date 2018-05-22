@@ -28,7 +28,14 @@ namespace ActivateTurboM.Framework
         String strColonia;
         int intCodigoPostal;
 
+        String strUsername;
         String strPassword;
+
+        String strDireccionFotoPerfil;
+        String strDireccionActaNacimiento;
+        String strDireccionCURP;
+        String strDireccionComprobanteDomicilio;
+
 
         public int IntIDUsuario { get => intIDUsuario; set => intIDUsuario = value; }
         public int IntIDCiudad { get => intIDCiudad; set => intIDCiudad = value; }
@@ -49,6 +56,11 @@ namespace ActivateTurboM.Framework
         public string StrColonia { get => strColonia; set => strColonia = value; }
         public int IntCodigoPostal { get => intCodigoPostal; set => intCodigoPostal = value; }
         public string StrPassword { get => strPassword; set => strPassword = value; }
+        public string StrUsername { get => strUsername; set => strUsername = value; }
+        public string StrDireccionFotoPerfil { get => strDireccionFotoPerfil; set => strDireccionFotoPerfil = value; }
+        public string StrDireccionActaNacimiento { get => strDireccionActaNacimiento; set => strDireccionActaNacimiento = value; }
+        public string StrDireccionCURP { get => strDireccionCURP; set => strDireccionCURP = value; }
+        public string StrDireccionComprobanteDomicilio { get => strDireccionComprobanteDomicilio; set => strDireccionComprobanteDomicilio = value; }
 
         public static DataSet InsertarUsuarioTemporal(Usuario UsuarioTemporal)
         {
@@ -74,15 +86,123 @@ namespace ActivateTurboM.Framework
             return ds;
         }
 
-        public static DataSet SelectNombreCompletoUsuario(int IDUSuario)
+        public static DataSet SelectNombreCompletoUsuario(int IDUsuario)
         {
             DataSet ds = new DataSet();
             List<SqlParameter> listParameters = new List<SqlParameter>();
-            listParameters.Add(new SqlParameter { ParameterName = "@pIDUsuario", SqlDbType = SqlDbType.VarChar, Value = IDUSuario });
+            listParameters.Add(new SqlParameter { ParameterName = "@pIDUsuario", SqlDbType = SqlDbType.VarChar, Value = IDUsuario });
 
             try
             {
                 ds = Conexion.execute_sp("NombreCompletoUsuario", listParameters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public static DataSet SelectDatosPerfilUsuario(int IDUsuario)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listParameters = new List<SqlParameter>();
+            listParameters.Add(new SqlParameter { ParameterName = "@pIDUsuario", SqlDbType = SqlDbType.VarChar, Value = IDUsuario });
+
+            try
+            {
+                ds = Conexion.execute_sp("DatosUsuario", listParameters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public static DataSet UpdatePerfilUsuario(Usuario Usuario)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listParameters = new List<SqlParameter>();
+            listParameters.Add(new SqlParameter { ParameterName = "@pIDUsuario", SqlDbType = SqlDbType.Int, Value = Usuario.IntIDUsuario });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrPassword", SqlDbType = SqlDbType.VarChar, Value = Usuario.strPassword });
+            listParameters.Add(new SqlParameter { ParameterName = "@pIDCiudad", SqlDbType = SqlDbType.Int, Value = Usuario.IntIDCiudad });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrNombre", SqlDbType = SqlDbType.VarChar, Value = Usuario.StrNombres });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrApellidoPaterno", SqlDbType = SqlDbType.VarChar, Value = Usuario.StrApellidoPaterno });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrApellidoMaterno", SqlDbType = SqlDbType.VarChar, Value = Usuario.StrApellidoMaterno });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrEmail", SqlDbType = SqlDbType.VarChar, Value = Usuario.StrEmail });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrTelefono", SqlDbType = SqlDbType.VarChar, Value = Usuario.StrTelefono });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrCelular", SqlDbType = SqlDbType.VarChar, Value = Usuario.StrTelefono });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrRFC", SqlDbType = SqlDbType.VarChar, Value = Usuario.StrRFC });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrCURP", SqlDbType = SqlDbType.VarChar, Value = Usuario.StrCURP });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrSeguroSocial", SqlDbType = SqlDbType.VarChar, Value = Usuario.StrSeguroSocial });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrCalle", SqlDbType = SqlDbType.VarChar, Value = Usuario.StrCalle });
+            listParameters.Add(new SqlParameter { ParameterName = "@pIntNumeroInterior", SqlDbType = SqlDbType.Int, Value = Usuario.IntNumeroInterior });
+            listParameters.Add(new SqlParameter { ParameterName = "@pIntNumeroExterior", SqlDbType = SqlDbType.Int, Value = Usuario.IntNumeroExterior });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrColonia", SqlDbType = SqlDbType.VarChar, Value = Usuario.StrColonia });
+            listParameters.Add(new SqlParameter { ParameterName = "@pIntCodigoPostal", SqlDbType = SqlDbType.Int, Value = Usuario.intCodigoPostal });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrDireccionFotoPerfil", SqlDbType = SqlDbType.VarChar, Value = Usuario.StrDireccionFotoPerfil });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrDireccionCURP", SqlDbType = SqlDbType.VarChar, Value = Usuario.StrDireccionCURP });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrDireccionActaNacimiento", SqlDbType = SqlDbType.VarChar, Value = Usuario.StrDireccionActaNacimiento });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrDireccionDomicilio", SqlDbType = SqlDbType.VarChar, Value = Usuario.strDireccionComprobanteDomicilio });
+
+            try
+            {
+                ds = Conexion.execute_sp("UpdatePerfilUsuario", listParameters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public static DataSet SelectDatosUsuarioTemp(int IDUsuario = 0)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listParameters = new List<SqlParameter>();
+            listParameters.Add(new SqlParameter { ParameterName = "@pIDUsuarioTemp", SqlDbType = SqlDbType.VarChar, Value = IDUsuario });
+
+            try
+            {
+                ds = Conexion.execute_sp("SelectDatosUsuarioTemp", listParameters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public static DataSet AsignarCuentaUsuario(Usuario Usuario)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listParameters = new List<SqlParameter>();
+            listParameters.Add(new SqlParameter { ParameterName = "@pIDUsuarioTemp", SqlDbType = SqlDbType.Int, Value = Usuario.IntIDUsuario });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrUsername", SqlDbType = SqlDbType.VarChar, Value = Usuario.StrUsername });
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrOassword", SqlDbType = SqlDbType.VarChar, Value = Usuario.StrPassword });
+
+
+            try
+            {
+                ds = Conexion.execute_sp("SelectDatosUsuarioTemp", listParameters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public static DataSet DeleteIDUsuarioTemp(int IDUsuario)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listParameters = new List<SqlParameter>();
+            listParameters.Add(new SqlParameter { ParameterName = "@pIDUsuarioTemp", SqlDbType = SqlDbType.VarChar, Value = IDUsuario });
+
+            try
+            {
+                ds = Conexion.execute_sp("DeleteIDUsuarioTemp", listParameters);
             }
             catch (Exception ex)
             {

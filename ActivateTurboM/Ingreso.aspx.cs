@@ -19,35 +19,27 @@ namespace ActivateTurboM
             if (!IsPostBack)
             {
                 System.Web.UI.HtmlControls.HtmlGenericControl navbarUser = this.Master.FindControl("navbarUser") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                LinkButton btnModoAdmin = this.Master.FindControl("btnModoAdmin") as LinkButton;
+                System.Web.UI.HtmlControls.HtmlGenericControl divModoAdminSidebar = this.Master.FindControl("divModoAdminSidebar") as System.Web.UI.HtmlControls.HtmlGenericControl;
                 navbarUser.Visible = false;
+                btnModoAdmin.Visible = false;
+                divModoAdminSidebar.Visible = false;
             }
         }
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
             dsLogin = Conexion.SysLogin(tbUsername.Text, tbPassword.Text);
-            Label lblIDUsuario = this.Master.FindControl("lblIDUsuario") as Label;
-            Label lblEstadoUsuario = this.Master.FindControl("lblEstadoUsuario") as Label;
-
-            #region Codigo a comentar para actualizar el fork de Astrid
+            
             if (dsLogin.Tables[0].Rows.Count > 0)
             {
                 divMensajeError.Visible = false;
-                lblIDUsuario.Text = dsLogin.Tables[0].Rows[0]["IDUsuario"].ToString();
-
-                #endregion
-
-
-                String IDUsuario = lblIDUsuario.Text;
-                #region Fork Astrid, comentar al pasar a Master
-                //IDUsuario = "6";
-                #endregion
-                Session["IDU"] = IDUsuario;
-
-                #region Codigo a comentar para actualizar el fork de Astrid
+                
+                Session["IDU"] = dsLogin.Tables[0].Rows[0]["IDUsuario"].ToString();
+                Session["BTU"] = dsLogin.Tables[0].Rows[0]["bitTipoUsuario"].ToString();
+                
                 Response.Redirect("Panel/Inicio.aspx");
             }
-
             else
             {
                 divMensajeError.Visible = true;
@@ -55,9 +47,11 @@ namespace ActivateTurboM
                 tbUsername.Text = "";
                 tbPassword.Text = "";
             }
+        }
 
-            #endregion
-
+        protected void btnCrearCuenta_Click(object sender, EventArgs e)
+        {
+                Response.Redirect("/RegistroPreliminar.aspx");
         }
     }
 }

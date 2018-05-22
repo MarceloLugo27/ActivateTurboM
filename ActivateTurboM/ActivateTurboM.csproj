@@ -130,8 +130,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="css\material.css" />
+    <Content Include="css\Style_new.css" />
     <Content Include="css\materialize.css" />
-    <Content Include="css\materialize.min.css" />
     <Content Include="Exito.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -143,7 +144,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="image\icon_delete.png" />
+    <Content Include="image\icon_editar.png" />
+    <Content Include="image\placeholder.png" />
     <Content Include="Ingreso.aspx" />
+    <Content Include="js\init.js" />
     <Content Include="PanelMaster.Master" />
     <None Include="Properties\PublishProfiles\activateturbo - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -151,10 +156,13 @@
     <Content Include="js\materialize.js" />
     <Content Include="js\materialize.min.js" />
     <Content Include="Login.aspx" />
+    <Content Include="Panel\AdminUsuariosPendientes.aspx" />
     <Content Include="Panel\Genealogia.aspx" />
     <Content Include="Panel\Inicio.aspx" />
+    <Content Include="Panel\MiGenealogia.aspx" />
     <Content Include="Panel\Perfil.aspx" />
     <Content Include="Registro.aspx" />
+    <Content Include="RegistroPreliminar.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -184,6 +192,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="uploads\dummy.txt" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -206,6 +215,7 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Framework\Conexion.cs" />
+    <Compile Include="Framework\FTP.cs" />
     <Compile Include="Framework\Nodo.cs" />
     <Compile Include="Framework\Usuario.cs" />
     <Compile Include="Global.asax.cs">
@@ -232,6 +242,13 @@
     <Compile Include="PanelMaster.Master.designer.cs">
       <DependentUpon>PanelMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="Panel\AdminUsuariosPendientes.aspx.cs">
+      <DependentUpon>AdminUsuariosPendientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Panel\AdminUsuariosPendientes.aspx.designer.cs">
+      <DependentUpon>AdminUsuariosPendientes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Panel\Genealogia.aspx.cs">
       <DependentUpon>Genealogia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -245,6 +262,13 @@
     </Compile>
     <Compile Include="Panel\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Panel\MiGenealogia.aspx.cs">
+      <DependentUpon>MiGenealogia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Panel\MiGenealogia.aspx.designer.cs">
+      <DependentUpon>MiGenealogia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Panel\Perfil.aspx.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
@@ -261,6 +285,13 @@
     <Compile Include="Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RegistroPreliminar.aspx.cs">
+      <DependentUpon>RegistroPreliminar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroPreliminar.aspx.designer.cs">
+      <DependentUpon>RegistroPreliminar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -268,6 +299,7 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="uploads\fakeclass.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

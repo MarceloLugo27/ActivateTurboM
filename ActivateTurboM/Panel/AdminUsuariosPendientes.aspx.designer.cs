@@ -7,10 +7,37 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ActivateTurboM {
+namespace ActivateTurboM.Panel {
     
     
-    public partial class Ingreso {
+    public partial class AdminUsuariosPendientes {
+        
+        /// <summary>
+        /// Control dgvUsuariosPendientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView dgvUsuariosPendientes;
+        
+        /// <summary>
+        /// Control UpdatePanel1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
+        /// Control lblIDUsuarioTemp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIDUsuarioTemp;
         
         /// <summary>
         /// Control tbUsername.
@@ -31,57 +58,48 @@ namespace ActivateTurboM {
         protected global::System.Web.UI.WebControls.TextBox tbPassword;
         
         /// <summary>
-        /// Control btnRecuperarPassword.
+        /// Control tbNumeroReferencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink btnRecuperarPassword;
+        protected global::System.Web.UI.WebControls.TextBox tbNumeroReferencia;
         
         /// <summary>
-        /// Control btnCrearCuenta.
+        /// Control tbNombres.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnCrearCuenta;
+        protected global::System.Web.UI.WebControls.TextBox tbNombres;
         
         /// <summary>
-        /// Control UpdatePanelLogin.
+        /// Control tbApellidoPaterno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanelLogin;
+        protected global::System.Web.UI.WebControls.TextBox tbApellidoPaterno;
         
         /// <summary>
-        /// Control divMensajeError.
+        /// Control tbApellidoMaterno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMensajeError;
+        protected global::System.Web.UI.WebControls.TextBox tbApellidoMaterno;
         
         /// <summary>
-        /// Control lblMensajeError.
+        /// Control btnCrearUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensajeError;
-        
-        /// <summary>
-        /// Control btnIngresar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnIngresar;
+        protected global::System.Web.UI.WebControls.Button btnCrearUsuario;
     }
 }

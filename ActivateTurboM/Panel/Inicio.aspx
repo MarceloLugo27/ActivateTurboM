@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="row">
-            <div class="col s6">
+            <div class="col s12">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
                         <p>

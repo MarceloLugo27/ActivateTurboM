@@ -28,6 +28,7 @@ namespace ActivateTurboM.Panel
                 divEstadoHijos.Visible = false;
                 Label lblIDUsuario = this.Master.FindControl("lblIDUsuario") as Label;
                 lblIDUsuario.Text = (string)Session["IDU"];
+
                 dsDDL1 = Nodo.SelectNodoPadreDDL(int.Parse(lblIDUsuario.Text));
                 dsDDL2 = Nodo.SelectNodoPadreDDL(int.Parse(lblIDUsuario.Text));
 
@@ -84,7 +85,7 @@ namespace ActivateTurboM.Panel
                 dgvVendidos.DataSource = dsMisVentas.Tables[0];
                 dgvVendidos.DataBind();
                 divEstadoDGV.Visible = true;
-                lblEstadoDGV.Text = String.Format("Actualmente cuenta con {0} tickets vendidos de 4 con este número de referencia({0}/4).", dsMisVentas.Tables[0].Rows.Count);
+                lblEstadoDGV.Text = String.Format("Actualmente cuenta con {0} tickets vendidos de 4 con este número de referencia ({0}/4).", dsMisVentas.Tables[0].Rows.Count);
             }
         }
 
@@ -103,8 +104,6 @@ namespace ActivateTurboM.Panel
             }
             dgvDescendencia.DataSource = dgv3.Tables[0];
             dgvDescendencia.DataBind();
-
-
         }
     }
 }

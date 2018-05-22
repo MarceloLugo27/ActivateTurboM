@@ -5,7 +5,7 @@
 
     <div class="container">
 
-        <div class="card col s12 left">
+        <div class="card col s12">
             <div class="card-content">
                 <span class="card-title">Ascendencia directa (Padre)</span>
                 <asp:DropDownList ID="ddlAscendencia" runat="server" AutoPostBack="true" class="col s6" OnSelectedIndexChanged="ddlAscendencia_SelectedIndexChanged" CausesValidation="True"></asp:DropDownList>
@@ -15,14 +15,22 @@
                     </Triggers>
                     <ContentTemplate>
                         <div>
-                            <asp:GridView ID="dgvAscendencia" class="highlight responsive-table" AutoGenerateColumns="false" runat="server">
+                            <asp:GridView ID="dgvAscendencia" class="highlight responsive-table" AutoGenerateColumns="False" runat="server">
                                 <Columns>
+                                    <asp:TemplateField HeaderText="Foto de perfil">
+                                        <HeaderStyle Width="120px" />
+                                        <ItemTemplate>
+                                            <asp:Image ID="Image1" class="circle responsive-img" ImageUrl='<%#Eval("strDireccionFotoPerfil") %>' runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
                                     <asp:BoundField DataField="strNumeroReferencia" HeaderText="Referencia" />
                                     <asp:BoundField DataField="strNombreCompleto" HeaderText="Nombre" />
                                     <asp:BoundField DataField="strOrigen" HeaderText="Ciudad" />
-                                    <%-- <asp:BoundField DataField="intTelefono" HeaderText="Teléfono" />
-                                    <asp:BoundField DataField="strCelular" HeaderText="Celular" />--%>
+                                     <asp:BoundField DataField="intTelefono" HeaderText="Teléfono" />
+                                    <asp:BoundField DataField="strCelular" HeaderText="Celular" />
                                     <asp:BoundField DataField="strEmail" HeaderText="Email" />
+                                    
                                 </Columns>
                             </asp:GridView>
                         </div>
@@ -31,7 +39,7 @@
             </div>
         </div>
 
-        <div class="card col s12 left">
+        <div class="card col s12">
             <div class="card-content">
                 <span class="card-title">Mis ventas</span>
                 <asp:DropDownList ID="ddlMisVentas" runat="server" AutoPostBack="true" class="col s6" OnSelectedIndexChanged="ddlMisVentas_SelectedIndexChanged" CausesValidation="True"></asp:DropDownList>
@@ -41,8 +49,14 @@
                     </Triggers>
                     <ContentTemplate>
                         <div>
-                            <asp:GridView ID="dgvVendidos" class="highlight responsive-table" AutoGenerateColumns="false" runat="server">
+                            <asp:GridView ID="dgvVendidos" class="highlight responsive-table" AutoGenerateColumns="False" runat="server">
                                 <Columns>
+                                    <asp:TemplateField HeaderText="Foto de perfil">
+                                        <HeaderStyle Width="120px" />
+                                        <ItemTemplate>
+                                            <asp:Image ID="Image1" class="circle responsive-img" ImageUrl='<%#Eval("strDireccionFotoPerfil") %>' runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:BoundField DataField="strNumeroReferencia" HeaderText="Referencia" />
                                     <asp:BoundField DataField="strNombreCompleto" HeaderText="Nombre" />
                                     <asp:BoundField DataField="strOrigen" HeaderText="Ciudad" />
@@ -62,7 +76,7 @@
             </div>
         </div>
 
-        <div class="card col s12 left">
+        <div class="card col s12">
             <div class="card-content">
                 <span class="card-title">Descendencia</span>
                 <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
@@ -73,6 +87,12 @@
                         <div>
                             <asp:GridView ID="dgvDescendencia" class="highlight responsive-table" AutoGenerateColumns="false" runat="server">
                                 <Columns>
+                                    <asp:TemplateField HeaderText="Foto de perfil">
+                                        <HeaderStyle Width="120px" />
+                                        <ItemTemplate>
+                                            <asp:Image ID="Image1" class="circle responsive-img" ImageUrl='<%#Eval("strDireccionFotoPerfil") %>' runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:BoundField DataField="strNumeroReferencia" HeaderText="Referencia" />
                                     <asp:BoundField DataField="strNombreCompleto" HeaderText="Nombre" />
                                     <asp:BoundField DataField="strOrigen" HeaderText="Ciudad" />

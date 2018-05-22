@@ -13,8 +13,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
 
     <!-- CSS  -->
+    <%-- <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />--%>
+    <%--<link href="css/Style_new.css" type="text/css" rel="stylesheet" media="screen,projection" />--%>
+    <link href="css/material.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
 <body>
     <form runat="server">
@@ -40,7 +43,7 @@
         </asp:ScriptManager>
 
         <nav id="navbarUser" runat="server">
-            <div class="nav-wrapper indigo">
+            <div class="nav-wrapper indigo" style="padding-left: 1%;">
                 <ul class="right red accent-4">
                     <li>
                         <asp:LinkButton ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click">Cerrar sesión <i class="material-icons right">close</i></asp:LinkButton></li>
@@ -55,9 +58,18 @@
                         <asp:LinkButton ID="btnGenealogia" runat="server" OnClick="btnGenealogia_Click">Genealogia</asp:LinkButton></li>
                     <li>
                         <asp:LinkButton ID="btnPagos" Enabled="false" runat="server">Pagos</asp:LinkButton></li>
+                    <li>
+                        <asp:LinkButton ID="btnModoAdmin" class="dropdown-trigger" data-target="dropdownadmin" runat="server">Modo Administrador <i class="material-icons right">arrow_drop_down</i></asp:LinkButton></li>
                 </ul>
             </div>
         </nav>
+
+        <ul id="dropdownadmin" class="dropdown-content">
+            <li>
+                <asp:LinkButton ID="btnAdminPerfiles" runat="server">Perfiles de usuarios</asp:LinkButton></li>
+            <li>
+                <asp:LinkButton ID="btnAdminAsignarCuentas" runat="server" OnClick="btnAdminAsignarCuentas_Click">Asignar cuentas de usuario</asp:LinkButton></li>
+        </ul>
 
         <ul class="sidenav" id="mobile-demo">
             <li>
@@ -68,19 +80,26 @@
                 <asp:LinkButton ID="btnGenealogiaMov" runat="server" OnClick="btnGenealogiaMov_Click">Genealogia</asp:LinkButton></li>
             <li>
                 <asp:LinkButton ID="btnPagosMov" Enabled="false" runat="server">Pagos</asp:LinkButton></li>
+            <div id="divModoAdminSidebar" runat="server">
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li><a class="subheader">Modo Administrador</a></li>
+                <li>
+                    <asp:LinkButton ID="btnAdminPerfilesMov" runat="server">Perfiles de usuarios</asp:LinkButton></li>
+                <li>
+                    <asp:LinkButton ID="btnAdminAsignarCuentasMov" runat="server" OnClick="btnAdminAsignarCuentasMov_Click">Asignar cuentas de usuario</asp:LinkButton></li>
+            </div>
+
         </ul>
 
         <!-- Page Layout here -->
-        <div class="row">
             <br />
-            <div class="col s12">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
 
                 </asp:ContentPlaceHolder>
-            </div>
-        </div>
-
     </form>
+
     <footer class="page-footer indigo fixed-bottom">
         <div class="footer-copyright indigo">
             <div class="container">
@@ -92,9 +111,12 @@
             </div>
         </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+
+        <!--  Scripts-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -109,6 +131,9 @@
             $('#modal1').modal('open');
         }
 
+        function myFunction(Mensaje) {
+            alert(Mensaje);
+        }
     </script>
 </body>
 
