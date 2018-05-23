@@ -53,6 +53,7 @@ namespace ActivateTurboM.Panel
             dsAscendencia = Nodo.SelectInfoNodoPadre(int.Parse(lblDDL1.Text));
             dgvAscendencia.DataSource = dsAscendencia.Tables[0];
             dgvAscendencia.DataBind();
+
         }
 
         protected void ddlMisVentas_SelectedIndexChanged(object sender, EventArgs e)

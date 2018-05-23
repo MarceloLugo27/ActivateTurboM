@@ -77,5 +77,39 @@ namespace ActivateTurboM.Framework
             return ds;
         }
 
+        public static DataSet SelectInfoNodoDescendiente2(int IDNodoPadre)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listParameters = new List<SqlParameter>();
+            listParameters.Add(new SqlParameter { ParameterName = "@pIDNodoPadre", SqlDbType = SqlDbType.VarChar, Value = IDNodoPadre });
+
+            try
+            {
+                ds = Conexion.execute_sp("SelectInfoNodoDescendiente2", listParameters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public static DataSet BuscarNodoPorReferencia(String NumeroReferencia = "", int IDNodo = 0)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listParameters = new List<SqlParameter>();
+            listParameters.Add(new SqlParameter { ParameterName = "@pStrNumeroReferencia", SqlDbType = SqlDbType.VarChar, Value = NumeroReferencia });
+            listParameters.Add(new SqlParameter { ParameterName = "@pIDNodo", SqlDbType = SqlDbType.Int, Value = IDNodo });
+
+            try
+            {
+                ds = Conexion.execute_sp("BuscarNodoPorReferencia", listParameters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
     }
 }

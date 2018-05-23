@@ -17,7 +17,7 @@
                                 <HeaderStyle HorizontalAlign="Center" />
                                 <ItemStyle HorizontalAlign="Center" Width="70px" />
                             </asp:ButtonField>
-                            <asp:BoundField DataField="IDUsuarioTemp" HeaderText="IDUsuario" />
+                            <asp:BoundField DataField="IDUsuarioTemp" HeaderText="IDUsuario" Visible="false" />
                             <asp:BoundField DataField="strNumeroReferencia" HeaderText="Referencia" />
                             <asp:BoundField DataField="strNombreCompleto" HeaderText="Nombre" />
                             <asp:BoundField DataField="intTelefono" HeaderText="Teléfono" />
