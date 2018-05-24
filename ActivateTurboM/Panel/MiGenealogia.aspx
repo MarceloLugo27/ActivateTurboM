@@ -58,7 +58,7 @@
                         <span class="card-title">Este ticket (1)</span>
                         <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Always">
                             <Triggers>
-                                <asp:AsyncPostBackTrigger ControlID="ddlNodosUsuario" EventName="SelectedIndexChanged" />
+                                <asp:AsyncPostBackTrigger ControlID="dgvPadre" EventName="SelectedIndexChanged" />
                             </Triggers>
                             <ContentTemplate>
                                 <div>
